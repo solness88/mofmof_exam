@@ -1,0 +1,25 @@
+<h1>物件登録</h1>
+<%= form_with(model: @apartment, local: true) do |form| %>
+  <div>
+    <div><%= form.label :物件名 %></div>
+    <div><%= form.text_field :name %></div>
+  </div>
+  <div>
+    <div><%= form.label :賃料 %></div>
+    <div><%= form.text_field :rent %>円</div>
+  </div>
+  <div>
+    <div><%= form.label :住所 %></div>
+    <div><%= form.text_field :address %></div>
+  </div>
+  <div>
+    <div><%= form.label :築年数 %></div>
+    <div><%= form.text_field :age %>年</div>
+  </div>
+  <div>
+    <div><%= form.label :備考 %></div>
+    <div><%= form.text_area :memo %></div>
+  </div>
+  <p style = "border-bottom: 1px solid black"></p>
+  <div><%= form.submit :登録する%></div>
+<% end %>
