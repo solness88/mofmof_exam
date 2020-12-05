@@ -16,13 +16,13 @@ class ApartmentsController < ApplicationController
     end
   end
   def show
-    @station_count = 0
   end
   def edit
+    @apartment.stations.new
   end
   def update
-    if Apartment.update(apartment_params)
-      redirect_to apartment_path
+    if @apartment.update(apartment_params)
+      redirect_to apartments_path, notice: "内容を更新しました"
     else
       render :edit
     end
@@ -36,7 +36,7 @@ class ApartmentsController < ApplicationController
   end
   private
   def apartment_params
-    params.require(:apartment).permit(:name, :rent, :address, :age, :memo, stations_attributes: [:route, :station, :by_walk])
+    params.require(:apartment).permit(:name, :rent, :address, :age, :memo, stations_attributes: [:id, :route, :station, :by_walk, :_destroy])
   end
   def set_apartment
     @apartment = Apartment.find(params[:id])
